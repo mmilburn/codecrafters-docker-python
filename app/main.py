@@ -72,15 +72,15 @@ def get_digests(image: str, tag: str, token: str) -> List[Tuple[str, str]]:
     return [(layer["digest"], layer["mediaType"]) for layer in layers]
 
 
-def ingest_layer(image: str, digest: Tuple[str, str], dir: Path, token: str) -> None:
+def ingest_layer(image: str, digest: Tuple[str, str], path: Path, token: str) -> None:
     response = request.urlopen(request.Request(
         f"https://registry.hub.docker.com/v2/library/{image}/blobs/{digest[0]}",
         method="GET",
         headers={"Authorization": f"Bearer {token}", "Accept": digest[1]},
     ))
-    file_path = dir / (digest[0].replace("sha256:", "") + ".tar.gz")
+    file_path = path / (digest[0].replace("sha256:", "") + ".tar.gz")
     file_path.write_bytes(response.read())
-    unpack_archive(file_path, dir)
+    unpack_archive(file_path, path)
     file_path.unlink()
 
 
