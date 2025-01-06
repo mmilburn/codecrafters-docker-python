@@ -14,6 +14,7 @@ def main():
         os.chroot(temp_dir)
         root = Path("/")
         command = root / Path(command).name
+        os.unshare(os.CLONE_NEWPID)
         completed_process = subprocess.run([command, *args], capture_output=True)
         print(completed_process.stdout.decode(), end="")
         print(completed_process.stderr.decode(), file=sys.stderr, end="")
