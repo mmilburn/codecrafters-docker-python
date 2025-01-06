@@ -59,6 +59,7 @@ def get_digests(image: str, tag: str, token: str) -> List[Tuple[str, str]]:
         for manifest in manifest_list["manifests"]:
             if manifest["platform"]["architecture"] == arch and manifest["platform"]["os"] == os_name:
                 digest = manifest["digest"]
+                break
 
         response = request.urlopen(request.Request(
             f"https://registry.hub.docker.com/v2/library/{image}/manifests/{digest}",
