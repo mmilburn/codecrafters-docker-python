@@ -127,7 +127,10 @@ def ingest_layer(image: str, digest: Tuple[str, str], path: Path, token: str) ->
         unpack_archive(file_path, path)
         file_path.unlink()
 
-
+"""
+NOTICE: The docker challenge is deprecated.
+https://forum.codecrafters.io/t/docker-challenge-is-deprecated/626
+"""
 def main():
     command = sys.argv[3]
     args = sys.argv[4:]
