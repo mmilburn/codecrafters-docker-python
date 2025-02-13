@@ -28,7 +28,7 @@ You can now execute the code and run a simple command like this:
 mydocker run alpine:latest cat /etc/issue
 ```
 
-## Demo video
+## Demo Video
 Here's a video of the code being run in the codecrafters test environment.
 
 https://github.com/user-attachments/assets/1ae8adb3-13d9-418f-9182-e41dd0dcb01e
